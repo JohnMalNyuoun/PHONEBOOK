@@ -21,6 +21,17 @@ let phonebook = [
 const generateId = () =>
   phonebook.length > 0 ? Math.max(...phonebook.map(p => p.id)) + 1 : 1
 
+app.get('/', (req, res) => {
+  res.send(`
+    <h1>Phonebook Backend</h1>
+    <p>Phonebook has info for ${phonebook.length} people</p>
+    <ul>
+      <li><a href="/api/persons">/api/persons</a></li>
+      <li><a href="/info">/info</a></li>
+    </ul>
+  `)
+})
+
 app.get('/api/persons', (req, res) => {
   res.json(phonebook)
 })
