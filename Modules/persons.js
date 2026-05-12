@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const dns = require('dns')
+dns.setServers(['8.8.8.8', '8.8.4.4'])
 
 const url = process.env.MONGODB_URI
 
@@ -16,7 +18,8 @@ mongoose.connect(url)
 const personSchema = new mongoose.Schema({
   name: {
     type: String,
-    minlength: 5
+    minlength: 3,
+    required: true
   },
 number: {
     type: String,
